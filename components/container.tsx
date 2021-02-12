@@ -1,7 +1,5 @@
 import React from 'react';
 import Card from "./productCard";
-import styled from "styled-components";
-
 
 export default function CardContainer({rows}) {
 
