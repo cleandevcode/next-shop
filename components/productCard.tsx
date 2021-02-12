@@ -38,12 +38,12 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function ProductCard({ row, symbol }) {
+export default function ProductCard({ row, symbol, currency }) {
     const classes = useStyles();
     
     return (
       <Grid item lg={3} md={4} sm={6} xs={12} className={classes.cardGrid} >
-        <Link key={row.id} href={`/product/${row.id}`}>
+        <Link key={row.id} href={`/product/${row.id}?currency=${currency}`}>
          <Card className={classes.card}>
           <CardActionArea>
             <CardMedia

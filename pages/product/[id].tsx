@@ -6,7 +6,30 @@ import { Product } from "typedefs";
 import { Button } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
+const symbols: any = [
+  {
+    text: "USD",
+    symbol: "$"
+  },
+  {
+    text: "EUR",
+    symbol: "€"
+  },
+  {
+    text: "JPY",
+    symbol: "¥"
+  },
+  {
+    text: "GBP",
+    symbol: "£"
+  },
+]; 
+
 const productPage = ({ product }: { product: Product }) => {
+  const router = useRouter();
+  const { currency } = router.query;
+
+  const symbol = symbols.find(x=>x.text == currency)?.symbol;
 
   return (
     <>
@@ -26,7 +49,7 @@ const productPage = ({ product }: { product: Product }) => {
         <h2 className="title">{product.title}</h2>
         <h5 className="" >{product.description}</h5>
         <div className="details">
-          <div className="datapoint">Price: {product.price}</div>
+          <div className="datapoint">Price:  {symbol}{product.price}</div>
           <div className="datapoint">Category: {product.category}</div>
           
         </div>
@@ -85,7 +108,7 @@ productPage.getInitialProps = async ({ store }) => {
 const mapStateToProps = state => {
   const router = useRouter();
   console.log("hihih->", router.query)
-  const { id } = router.query;
+  const { id, currency } = router.query;
   return {
     product: state.product?.product?.filter(p => String(p.id) === id)[0]
   };

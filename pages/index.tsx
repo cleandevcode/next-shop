@@ -95,7 +95,7 @@ const LandingPage = ({product}) => {
           </Select>
       </FormControl>
       <h2 className="title">Products</h2>
-      <CardContainer rows={products} symbol={symbol} />
+      <CardContainer rows={products} symbol={symbol} currency={currecy} />
       
       <style jsx>{`
         .title {
