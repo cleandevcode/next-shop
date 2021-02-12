@@ -42,7 +42,7 @@ export default function ProductCard({ row, symbol }) {
     const classes = useStyles();
     
     return (
-      <Grid item lg={3} md={4} sm={6}  xs={12} className={classes.cardGrid} >
+      <Grid item lg={3} md={4} sm={6} xs={12} className={classes.cardGrid} >
         <Link key={row.id} href={`/product/${row.id}`}>
          <Card className={classes.card}>
           <CardActionArea>

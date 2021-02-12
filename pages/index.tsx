@@ -7,27 +7,26 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {useState, useEffect} from 'react';
+import { stringify } from "querystring";
 
-const symbols = [
+const symbols: any = [
   {
-    "text": "USD",
-    "symbol": "$"
+    text: "USD",
+    symbol: "$"
   },
   {
-    "text": "EUR",
-    "symbol": "€"
+    text: "EUR",
+    symbol: "€"
   },
   {
-    "text": "JPY",
-    "symbol": "¥"
+    text: "JPY",
+    symbol: "¥"
   },
   {
-    "text": "GBP",
-    "symbol": "£"
+    text: "GBP",
+    symbol: "£"
   },
 ]; 
-
-
 
 const LandingPage = ({product}) => {
 
@@ -55,7 +54,8 @@ const LandingPage = ({product}) => {
   
   const handleChange = async (event: any) => {
     const target = event.target.value;
-    setSymbol(symbols.find(x=>x.text == target)?.symbol);
+    const temp = symbols.find(x=>x.text === target).symbol;
+    setSymbol(temp);
 
     setCurrency(target);
     const ratio = await (await fetch('https://api.exchangeratesapi.io/latest?base=USD&symbols=EUR,GBP,JPY')).json();
