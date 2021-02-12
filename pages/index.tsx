@@ -28,6 +28,7 @@ const symbols = [
 ]; 
 
 
+
 const LandingPage = ({product}) => {
 
   const [products, setProducts] = useState(product);
@@ -52,9 +53,9 @@ const LandingPage = ({product}) => {
   
   const classes = useStyles();
   
-  const handleChange = async (event) => {
-    var target = event.target.value;
-    setSymbol(symbols.find(x=>x.text === target)?.symbol);
+  const handleChange = async (event: any) => {
+    const target = event.target.value;
+    setSymbol(symbols.find(x=>x.text == target)?symbol:"$");
 
     setCurrency(target);
     const ratio = await (await fetch('https://api.exchangeratesapi.io/latest?base=USD&symbols=EUR,GBP,JPY')).json();
