@@ -36,7 +36,7 @@ const BasicHTML = ({ children }) => (
       <meta {...({ charSet: "UTF-8" } as any)} />
       <meta name="description" content="Bootstrap Site Project" />
       <meta name="keywords" content="Nextjs, React, Redux, TypeScript" />
-      <meta name="author" content="Gagan Jakhotiya" />
+      <meta name="author" content="William Dung" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link
         rel="stylesheet"
@@ -52,8 +52,8 @@ const BasicHTML = ({ children }) => (
 
 const globalCSS = css.global`
   body {
-    padding: 30px;
-    background: #272a2d;
+    padding: 10px;
+    background: #F0EEE4;
   }
 `;
 

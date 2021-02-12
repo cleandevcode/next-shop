@@ -8,11 +8,6 @@ import { Button } from "@material-ui/core";
 const productPage = ({ product }: { product: Product }) => {
   return (
     <div>
-      <h2 className="title">{product.title}</h2>
-      <div className="details">
-        <div className="datapoint">Price: {product.price}</div>
-        
-      </div>
       <Button
         onClick={() => Router.back()}
         color="secondary"
@@ -20,9 +15,14 @@ const productPage = ({ product }: { product: Product }) => {
       >
         {"< Go Back"}
       </Button>
+      <h2 className="title">{product.title}</h2>
+      <div className="details">
+        <div className="datapoint">Price: {product.price}</div>
+        
+      </div>
+      
       <style jsx>{`
         * {
-          color: #fff;
           font-family: Roboto;
         }
         .title {
