@@ -2,10 +2,6 @@ import React from 'react';
 import Card from "./productCard";
 import styled from "styled-components";
 
-const Container = styled.div`
-      display: flex;
-      flex-wrap: wrap;
-`;
 
 export default function CardContainer({rows}) {
 
@@ -15,11 +11,20 @@ export default function CardContainer({rows}) {
         rows.slice(0, 10);
 
     return (
-        <Container>
+        <div className="container">
         {getVisibleRows().map(row=> (
             <Card row={row} />
         ))
         }
-        </Container>
+        <style jsx>
+            {`
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            `
+            }
+        </style>
+        </div>
     );
 }
