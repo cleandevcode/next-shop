@@ -3,30 +3,10 @@ import { fetchProduct } from "store/actions/product";
 import { useRouter } from "next/router";
 import Router from "next/router";
 import { Product } from "typedefs";
-import { Button, FormHelperText } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      display: "flex",
-      flexWrap: 'wrap',
-      backgroundColor: '#fff',
-      padding: 25
-    },
-    imageContainer: {
-      textAlign: 'center'
-    },
-    image: {
-      height: 400,
-      backgroundSize: 'contain'
-    }
-  })
-);
 
 const productPage = ({ product }: { product: Product }) => {
-  const classes = useStyles();
 
   return (
     <>
@@ -104,6 +84,7 @@ productPage.getInitialProps = async ({ store }) => {
 
 const mapStateToProps = state => {
   const router = useRouter();
+  console.log("hihih->", router.query)
   const { id } = router.query;
   return {
     product: state.product?.product?.filter(p => String(p.id) === id)[0]

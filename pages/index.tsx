@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchProduct } from "store/actions/product";
+import { selectPerson, fetchProduct } from "store/actions/product";
 import CardContainer from "../components/container";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -7,8 +7,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {useState, useEffect} from 'react';
-import { Product } from "typedefs";
-import { NextPage } from "next";
 
 const symbols = [
   {
@@ -29,11 +27,9 @@ const symbols = [
   },
 ]; 
 
-interface Props {
-  product: Product[];
-}
 
-const LandingPage: NextPage<Props> = ({product}) => {
+const LandingPage = ({product}) => {
+
   const [products, setProducts] = useState(product);
   const [currecy, setCurrency] = useState("USD");
 
@@ -73,6 +69,7 @@ const LandingPage: NextPage<Props> = ({product}) => {
       p.forEach(item=>{
         return item.price = (Number(item.price) * new_ratio).toFixed(2);
       });
+
         setProducts([...p])
       }
   };
@@ -115,16 +112,17 @@ const LandingPage: NextPage<Props> = ({product}) => {
   );
 }
 
-LandingPage.getInitialProps  = async ({ store }) => {
+LandingPage.getInitialProps   = async ({ store }) => {
   await store.dispatch(fetchProduct());
 };
 
 const mapStateToProps = state => {
   return {
     product: state.product?.product || [],
+    selectedPerson: state.product.selectedPerson
   };
 };
 
-const mapDispatchToProps = { fetchProduct };
+const mapDispatchToProps = { selectPerson, fetchProduct };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
