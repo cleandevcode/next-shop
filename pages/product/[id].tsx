@@ -5,6 +5,7 @@ import Router from "next/router";
 import { Product } from "typedefs";
 import { Button } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
+import {useEffect, useState} from 'react';
 
 const symbols: any = [
   {
@@ -25,11 +26,24 @@ const symbols: any = [
   },
 ]; 
 
+
 const productPage = ({ product }: { product: Product }) => {
   const router = useRouter();
-  const { currency } = router.query;
+  const currency_temp: any  = router.query.currency;
 
-  const symbol = symbols.find(x=>x.text == currency)?.symbol;
+
+  const [updatePrice, setPrice] = useState(0);
+
+
+  const symbol = symbols.find(x=>x.text == currency_temp)?.symbol;
+
+  useEffect(()=> {
+    fetch('https://api.exchangeratesapi.io/latest?base=USD&symbols=EUR,GBP,JPY').then(res=>res.json()).then(res=>{
+
+      let ratio = currency_temp === "USD" ? 1 : res.rates[currency_temp];
+      setPrice((Number(product.price) * ratio));
+    })
+  },[]);
 
   return (
     <>
@@ -49,7 +63,7 @@ const productPage = ({ product }: { product: Product }) => {
         <h2 className="title">{product.title}</h2>
         <h5 className="" >{product.description}</h5>
         <div className="details">
-          <div className="datapoint">Price:  {symbol}{product.price}</div>
+          <div className="datapoint">Price:  {symbol}{updatePrice.toFixed(2)}</div>
           <div className="datapoint">Category: {product.category}</div>
           
         </div>
