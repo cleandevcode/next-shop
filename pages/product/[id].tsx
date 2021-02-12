@@ -122,7 +122,7 @@ productPage.getInitialProps = async ({ store }) => {
 const mapStateToProps = state => {
   const router = useRouter();
   console.log("hihih->", router.query)
-  const { id, currency } = router.query;
+  const { id } = router.query;
   return {
     product: state.product?.product?.filter(p => String(p.id) === id)[0]
   };
