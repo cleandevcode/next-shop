@@ -18,7 +18,7 @@ const productPage = ({ product }: { product: Product }) => {
       </Button>
     <div className="container">
       
-      <Grid item lg={6} xs={12} className="imageContainer">
+      <Grid className="imageContainer" lg={6} xs={12} style={{textAlign: 'center'}} >
         <img src={product.image} className="image" />
       </Grid>
       <Grid item lg={6} xs={12}>
@@ -46,7 +46,7 @@ const productPage = ({ product }: { product: Product }) => {
             background: white;
           }
           .imageContainer {
-            text-align: center
+            text-align: center;
           }
           .image {
             height: 400px;

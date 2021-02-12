@@ -4,5 +4,5 @@ export interface Product {
   price: BigInteger;
   description: String;
   category: String;
-  image: String;
+  image: string;
 }
