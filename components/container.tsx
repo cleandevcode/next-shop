@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from "./productCard";
 
-export default function CardContainer({rows}) {
+export default function CardContainer({rows, symbol}) {
 
     if (rows?.length === 0) return null;
 
@@ -11,7 +11,7 @@ export default function CardContainer({rows}) {
     return (
         <div className="container">
         {getVisibleRows().map(row=> (
-            <Card row={row} />
+            <Card row={row} symbol={symbol} />
         ))
         }
         <style jsx>

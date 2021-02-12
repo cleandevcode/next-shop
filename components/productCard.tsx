@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function ProductCard({ row }) {
+export default function ProductCard({ row, symbol }) {
     const classes = useStyles();
     
     return (
@@ -56,7 +56,7 @@ export default function ProductCard({ row }) {
                 {row.title}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                {row.price}
+               {symbol} {row.price}
               </Typography>
             </CardContent>
           </CardActionArea>
