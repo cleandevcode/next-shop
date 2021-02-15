@@ -30,11 +30,7 @@ const symbols: any = [
 const productPage = ({ product }: { product: Product }) => {
   const router = useRouter();
   const currency_temp: any  = router.query.currency;
-
-
   const [updatePrice, setPrice] = useState(0);
-
-
   const symbol = symbols.find(x=>x.text == currency_temp)?.symbol;
 
   useEffect(()=> {
@@ -44,35 +40,29 @@ const productPage = ({ product }: { product: Product }) => {
       setPrice((Number(product.price) * ratio));
     })
   },[]);
-
+  
   return (
     <>
-    <Button
+      <Button
         onClick={() => Router.back()}
         color="secondary"
       >
         {"< Go Back"}
       </Button>
-    <div className="container">
-      
-      <Grid className="imageContainer" lg={6} xs={12} style={{textAlign: 'center'}} >
-        <img src={product.image} className="image" />
-      </Grid>
-      <Grid item lg={6} xs={12}>
-        
-        <h2 className="title">{product.title}</h2>
-        <h5 className="" >{product.description}</h5>
-        <div className="details">
-          <div className="datapoint">Price:  {symbol}{updatePrice.toFixed(2)}</div>
-          <div className="datapoint">Category: {product.category}</div>
-          
-        </div>
-        
-        
-      </Grid>
-    
-    </div>
-    <style jsx>{`
+      <div className="container">
+        <Grid className="imageContainer" lg={6} xs={12} style={{textAlign: 'center'}} >
+          <img src={product.image} className="image" />
+        </Grid>
+        <Grid item lg={6} xs={12}>
+          <h2 className="title">{product.title}</h2>
+          <h5 className="" >{product.description}</h5>
+          <div className="details">
+            <div className="datapoint">Price:  {symbol}{updatePrice.toFixed(2)}</div>
+            <div className="datapoint">Category: {product.category}</div>
+          </div>
+        </Grid>
+      </div>
+      <style jsx>{`
           * {
             font-family: Roboto;
           }
@@ -121,7 +111,6 @@ productPage.getInitialProps = async ({ store }) => {
 
 const mapStateToProps = state => {
   const router = useRouter();
-  console.log("hihih->", router.query)
   const { id } = router.query;
   return {
     product: state.product?.product?.filter(p => String(p.id) === id)[0]

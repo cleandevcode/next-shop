@@ -69,9 +69,9 @@ const LandingPage = ({product}) => {
       p.forEach(item=>{
         return item.price = (Number(item.price) * new_ratio).toFixed(2);
       });
+      setProducts([...p]);
 
-        setProducts([...p])
-      }
+    }
   };
 
   if(products && products.length === 0) {
