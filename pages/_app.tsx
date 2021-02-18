@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import React from "react";
 import withRedux from "next-redux-wrapper";
 import store from "../store";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -54,6 +55,20 @@ const globalCSS = css.global`
   body {
     padding: 10px;
     background: #F0EEE4;
+  }
+  .carousel .slide {
+    background:  unset;
+  }
+  .carousel .slide img {
+    width: 400px;
+  }
+  @media only screen and (max-width: 768px) {
+    .carousel .slide img {
+      width: 100%;
+    }
+  }
+  .carousel .carousel-status {
+    display: none;
   }
 `;
 

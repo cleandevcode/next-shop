@@ -55,19 +55,19 @@ export default function ProductCard({ row, symbol, currency }) {
               <Typography gutterBottom variant="body1" component="h6">
                 {row.title}
               </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
+              <Typography variant="body2" color="error" component="p">
                {symbol} {row.price}
               </Typography>
             </CardContent>
           </CardActionArea>
-          <CardActions>
+          {/* <CardActions>
             <Button size="small" color="primary">
               Share
             </Button>
             <Button size="small" color="primary">
               Learn More
             </Button>
-          </CardActions>
+          </CardActions> */}
         </Card>
         </Link>
       </Grid>

@@ -6,6 +6,8 @@ import { Product } from "typedefs";
 import { Button } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import {useEffect, useState} from 'react';
+import { Carousel } from 'react-responsive-carousel';
+
 
 const symbols: any = [
   {
@@ -51,15 +53,32 @@ const productPage = ({ product }: { product: Product }) => {
       </Button>
       <div className="container">
         <Grid className="imageContainer" lg={6} xs={12} style={{textAlign: 'center'}} >
-          <img src={product.image} className="image" />
+        <Carousel>
+                <div>
+                <img src={product.image} className="" />
+                </div>
+                <div>
+                <img src={product.image} className="" />
+                </div>
+                <div>
+                <img src={product.image} className="" />
+                </div>
+            </Carousel>
         </Grid>
         <Grid item lg={6} xs={12}>
           <h2 className="title">{product.title}</h2>
-          <h5 className="" >{product.description}</h5>
+          <p className="" >{product.description}</p>
           <div className="details">
-            <div className="datapoint">Price:  {symbol}{updatePrice.toFixed(2)}</div>
-            <div className="datapoint">Category: {product.category}</div>
+            <div className="datapoint">Price: <span className="red"> {symbol}{updatePrice.toFixed(2)}</span></div>
+            {/* <span className="category">{product.category}</span> */}
           </div>
+          <Button
+        color="default"
+        variant="outlined"
+        size="large"
+      >
+        {"Add to Cart"}
+      </Button>
         </Grid>
       </div>
       <style jsx>{`
@@ -90,6 +109,9 @@ const productPage = ({ product }: { product: Product }) => {
           .datapoint {
             font-size: 18px;
             margin-top: 10px;
+          }
+          .red {
+            color: red;
           }
           .address {
             margin-top: 20px;
